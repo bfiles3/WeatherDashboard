@@ -1,0 +1,8 @@
+header {
+    padding: 28px;
+    text-align: center;
+    background-image: url("../assets/headerimg.jpg");
+    color: white;
+    -webkit-text-stroke: 1px navy;
+    
+  }
