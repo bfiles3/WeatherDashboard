@@ -6,3 +6,11 @@ header {
     -webkit-text-stroke: 1px navy;
     
   }
+
+  .none {
+    display: none;
+}
+
+.block {
+    display: block;
+}
