@@ -4,28 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <script src="https://use.fontawesome.com/4bb7b39aaf.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>Weather Dashboard</title>
 </head>
 
 <body>
   <header>
-      <h1>Weather Dashboard</h1>
+    <h1>Weather Dashboard</h1>
   </header>
 
-
+  <!-- search bar -->
   <aside class="container-fluid">
     <div class="row searchbar">
       <div class="col-lg-3 bg-light pt-3 pb-3">
         <h6>Search by city:</h5>
           <div class="input-group mb-3">
             <input id="cityInput" type="text" class="form-control">
-            <button id="searchBtn" class="btn btn-primary" type="button">  <i class="fa fa-search"aria-hidden="true"></i></button>
+            <button id="searchBtn" class="btn btn-primary" type="button"> <i class="fa fa-search"
+                aria-hidden="true"></i></button>
           </div>
+
+          <div class="card">
+            <div class="card-body">
+              <ul class="list list-group list-group-flush searchHistory">
+                <!-- search history of cities -->
+              </ul>
+            </div>
+          </div>
+
+          
+
 
 
 
