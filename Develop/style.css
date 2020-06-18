@@ -16,9 +16,13 @@ header {
 }
 
 .green {
+  padding: 5px;
+  background-color: green;
 
 }
 
 .red {
-  
+  padding: 5px;
+  background-color: red;
+
 }

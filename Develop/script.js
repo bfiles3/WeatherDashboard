@@ -1,6 +1,6 @@
 // setting the necessary variables to be acessible
 var city = $("#cityInput").val();
-var apiKey = "&appid=27a9193c38972da4788c6714b194066a";
+var apiKey = "&appid=341a5ba6d1e80abcab308215c512cc88";
 var date = new Date();
 
 // create a function to allow search button to return forecast
@@ -13,7 +13,7 @@ city = $("#cityInput").val();
 $("#cityInput").val("");
 
 // get weather info from API and use that to run weather functions
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
 $.ajax({
   url: queryURL,
   method: "GET"
