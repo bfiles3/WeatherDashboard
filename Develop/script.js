@@ -1,7 +1,7 @@
 // setting the necessary variables to be acessible
 var city = $("#cityInput").val();
-var apiKey = "&appid=341a5ba6d1e80abcab308215c512cc88";
-var date = new Date();
+var apiKey = "3341a5ba6d1e80abcab308215c512cc88";
+//var date = new Date();
 
 // create a function to allow search button to return forecast
 $("#searchBtn").on("click", function () {
@@ -10,10 +10,10 @@ $("#searchBtn").on("click", function () {
 
 // return city from search and then clear search bar
 city = $("#cityInput").val();
-$("#cityInput").val("");
+//$("#cityInput").val("");
 
 // get weather info from API and use that to run weather functions
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
+var queryURL = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=3341a5ba6d1e80abcab308215c512cc88"
 $.ajax({
   url: queryURL,
   method: "GET"
@@ -73,7 +73,7 @@ function getWeather() {
 };
 
 // get weather for five day forecast
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid" + apiKey;
 $.ajax({
   url: queryURL,
   method: "GET"
