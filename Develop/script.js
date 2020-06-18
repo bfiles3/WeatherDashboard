@@ -1,6 +1,6 @@
 // setting the necessary variables to be acessible
 var city = $("#cityInput").val();
-var apiKey = "&appid=27a9193c38972da4788c6714b194066a";
+var apiKey = "&appid=341a5ba6d1e80abcab308215c512cc88";
 var date = new Date();
 
 // create a function to allow search button to return forecast
@@ -24,17 +24,17 @@ function searchHistory() {
 
 // get weather info from API and use that to run weather functions
 
-var queryUrl = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + apiKey
+var queryUrl = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
 $.ajax({
   url: queryUrl,
   method: "GET"
 })
-  .then(function (info) {
-    console.log(info.list.name)
-    console.log(info.list.main.humidity)
-    console.log(info.list.wind.speed)
-    console.log(info.list.weather[0].icon)
-    console.log(info.list.main.temp)
+  .then(function (response) {
+    console.log(response.list.name)
+    console.log(response.list.main.humidity)
+    console.log(response.list.wind.speed)
+    console.log(response.list.weather[0].icon)
+    console.log(response.list.main.temp)
     getWeather();
     getFiveDay();
     searchHistory();
@@ -62,13 +62,13 @@ $.ajax({
 // use HTML classes to create variables to display weather information and add it to page
 function getWeather() {
 
-  var title = $(".title").text(info.list.name);
+  var title = $(".title").text(response.list.name);
   var dated = $(".date").text(date);
-  var temp = $(".temp").text((info.list.main.temp + 32));
-  var humidity = $(".humidity").text(info.list.main.humidity)
-  var wind = $(".wind").text(info.list.wind.speed)
+  var temp = $(".temp").text((response.list.main.temp + 32));
+  var humidity = $(".humidity").text(response.list.main.humidity)
+  var wind = $(".wind").text(response.list.wind.speed)
   var uv = $(".uv").text(uvIndex.current.uv)
-  var icon = $(".icon").text(info.list.weather[0].icon)
+  var icon = $(".icon").text(response.list.weather[0].icon)
 
   title.append(dated, icon)
   $("#mainb").append(temp, humidity, wind, uv)
@@ -80,18 +80,18 @@ $.ajax({
   url: queryUrl,
   method: "GET"
 })
-  .then(function (info5) {
-    console.log(info5.name)
-    console.log(info5.forecast.humidity)
-    console.log(info5.forecast.wind.speed)
-    console.log(info5.weather[0].icon)
-    console.log(info5.forecast.temp.value)
+  .then(function (response) {
+    console.log(response.name)
+    console.log(response.forecast.humidity)
+    console.log(response.forecast.wind.speed)
+    console.log(response.weather[0].icon)
+    console.log(response.forecast.temp.value)
     getFiveDay();
     searchHistory();
   });
 
 function getFiveDay(){
-  var fiveTemp = $(".tempf").text((info.forecast.temperature.value + 32));
+  var fiveTemp = $(".tempf").text((response.forecast.temperature.value + 32));
   
 $("#mainf").append(fiveTemp, image)
 
