@@ -37,6 +37,7 @@ $.ajax({
 })
   .then(function (uvIndex) {
     console.log(uvIndex.current.uv)
+    
   });
 
 
@@ -81,6 +82,12 @@ $.ajax({
     searchHistory();
   });
 
+function getFiveDay(){
+  var fiveTemp = $(".tempf").text((info.forecast.temperature.value + 32));
+  
+$("#mainf").append(fiveTemp, image)
+
+};
 
 
 
