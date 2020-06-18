@@ -24,7 +24,7 @@ function searchHistory() {
 
 // get weather info from API and use that to run weather functions
 
-var queryUrl = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
+var queryUrl = "https://www.api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
 $.ajax({
   url: queryUrl,
   method: "GET"
@@ -75,7 +75,7 @@ function getWeather() {
 };
 
 // get weather for five day forecast
-var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid" + apiKey;
+var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid" + apiKey;
 $.ajax({
   url: queryUrl,
   method: "GET"
