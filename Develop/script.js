@@ -1,33 +1,25 @@
-// variables from HTML 
+// setting the necessary variables to be acessible
 var city = $("#cityInput").val();
-var search = $("#searchBtn");
-var searchHistory = $("#searchHistory");
-var apiKey = "&appid=341a5ba6d1e80abcab308215c512cc88"
-// var date = $datepicker({dateFormat:"mm/dd/yy"}).datepicker("setDate",new Date());
-var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+var apiKey = "&appid=27a9193c38972da4788c6714b194066a";
+var date = new Date();
 
-// get the value of the city on click of the search button
-$("#cityInput").on("click",(function(event) { 
-	
-	if (event.keyCode === 13) { 
-		event.preventDefault();
-		$("#searchBtn").click(); 
-	} 
-}));
+// create a function to allow search button to return forecast
+$("#searchBtn").on("click", function(){
+  $("#fiveDay").addClass(".block");
+});
 
-$("#searchBtn").on("click", function() {
- $('#fiveDay').addClass(".block")
-  $("#cityInput").val();
-  $("#cityInput").val("");
+// return city from search and then clear search bar
+city = $("#cityInput").val();
+$("#cityInput").val("");
 
-  $.ajax({
-    url: queryUrl,
-    method: "GET"
-  })
-  .then(function (response){
+// get weather info from API
+var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey; 
+$.ajax({
+  url: queryURL,
+  method: "GET"
+})
 
-    console.log(response);
-
-    console.log(response.name); 
-
-  })}) 
+// make function to append previous searches
+$(".searchHistory ul li").each(function(){
+  var searched = $("<li>")
+}

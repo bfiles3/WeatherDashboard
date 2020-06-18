@@ -7,7 +7,8 @@
 
   <script src="https://use.fontawesome.com/4bb7b39aaf.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <title>Weather Dashboard</title>
 </head>
@@ -31,34 +32,32 @@
           <div class="card">
             <div class="card-body">
               <ul class="list list-group list-group-flush searchHistory">
-                <!-- search history of cities -->
+                <li class="searched"></li><!-- search history of cities -->
               </ul>
             </div>
           </div>
 
-          <div class="col-lg-9"> 
+          <div class="col-lg-9">
             <div id="currentCity" class="mt-4">
-                
+            <!-- city name and date -->
             </div>
-        </div> 
-        <!-- End column -->
-    </div> 
-    <!-- End row -->
+          </div>
 
-    <!-- Start forecast container -->
-    <div class="mt-4 col-md-12"> 
+      </div>
 
+
+
+      <div class="mt-4 col-md-12">
+      <!-- five day forecast container -->
         <h6 id="fiveDay" class="mt-3 none">5-Day Forecast:</h6>
-
-        <!-- Start row -->
-        <div id="forecast" class="row"> 
+        <div id="forecast" class="row">
 
 
-        </div> 
-        <!-- End row -->
-    </div> 
-    <!-- End forecast container -->
-</div>
+        </div>
+
+      </div>
+
+    </div>
 
 
 
@@ -76,7 +75,7 @@
 
 
 
-          <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
