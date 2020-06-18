@@ -19,11 +19,11 @@ $.ajax({
   method: "GET"
 })
   .then(function (info) {
-    console.log(info.name)
-    console.log(info.main.humidity)
-    console.log(info.wind.speed)
-    console.log(info.weather[0].icon)
-    console.log(info.main.temp)
+    console.log(info.list.name)
+    console.log(info.list.main.humidity)
+    console.log(info.list.wind.speed)
+    console.log(info.list.weather[0].icon)
+    console.log(info.list.main.temp)
     getWeather();
     getFiveDay();
     searchHistory();
@@ -37,7 +37,13 @@ $.ajax({
 })
   .then(function (uvIndex) {
     console.log(uvIndex.current.uv)
-    
+    var uvNum = uv.Index.current.uv
+    if (uvNum <= 5){
+      uv.addClass("green")
+    }
+    else if (uvNum > 5){
+      uv.addClass("red")
+    }
   });
 
 
@@ -62,8 +68,8 @@ function getWeather() {
   var uv = $(".uv").text(uvIndex.current.uv)
   var icon = $(".icon").text(info.list.weather[0].icon)
 
-  title.append(dated, image)
-  $("#mainb").append(temp, humidity, wind)
+  title.append(dated, icon)
+  $("#mainb").append(temp, humidity, wind, uv)
 };
 
 // get weather for five day forecast
