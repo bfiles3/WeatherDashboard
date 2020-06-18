@@ -1,7 +1,7 @@
 // setting the necessary variables to be acessible
 var city = $("#cityInput").val();
-var apiKey = "3341a5ba6d1e80abcab308215c512cc88";
-//var date = new Date();
+var apiKey = "&appid=27a9193c38972da4788c6714b194066a";
+var date = new Date();
 
 // create a function to allow search button to return forecast
 $("#searchBtn").on("click", function () {
@@ -12,10 +12,21 @@ $("#searchBtn").on("click", function () {
 city = $("#cityInput").val();
 //$("#cityInput").val("");
 
+// make function to append previous searches
+function searchHistory() {
+  $(".searchHistory ul li").each(function () {
+    var searched = $("<li>").addClass("searched").on("click", function () {
+      $("#fiveDay").addClass("block");
+      $(".list").append(searched);
+    })
+  })
+};
+
 // get weather info from API and use that to run weather functions
-var queryURL = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=3341a5ba6d1e80abcab308215c512cc88"
+
+var queryUrl = "http://www.api.openweathermap.org/data/2.5/weather?q=" + city + apiKey
 $.ajax({
-  url: queryURL,
+  url: queryUrl,
   method: "GET"
 })
   .then(function (info) {
@@ -29,10 +40,12 @@ $.ajax({
     searchHistory();
   });
 
+
+
 // create function to get UV Data
-var queryURl = "https://api.openweathermap.org/data/2.5/onecall?" + city + apiKey;
+var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?" + city + apiKey;
 $.ajax({
-  url: queryURL,
+  url: queryUrl,
   method: "GET"
 })
   .then(function (uvIndex) {
@@ -46,20 +59,9 @@ $.ajax({
     }
   });
 
-
-// make function to append previous searches
-function searchHistory() {
-  $(".searchHistory ul li").each(function () {
-    var searched = $("<li>").addClass("searched").on("click", function () {
-      $("#fiveDay").addClass("block");
-      $(".list").append(searched);
-    })
-  })
-};
-
-
 // use HTML classes to create variables to display weather information and add it to page
 function getWeather() {
+
   var title = $(".title").text(info.list.name);
   var dated = $(".date").text(date);
   var temp = $(".temp").text((info.list.main.temp + 32));
@@ -73,9 +75,9 @@ function getWeather() {
 };
 
 // get weather for five day forecast
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid" + apiKey;
+var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid" + apiKey;
 $.ajax({
-  url: queryURL,
+  url: queryUrl,
   method: "GET"
 })
   .then(function (info5) {
