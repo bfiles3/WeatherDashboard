@@ -4,7 +4,7 @@ var apiKey = "&appid=27a9193c38972da4788c6714b194066a";
 var date = new Date();
 
 // create a function to allow search button to return forecast
-$("#searchBtn").on("click", function(){
+$("#searchBtn").on("click", function () {
   $("#fiveDay").addClass("block");
 });
 
@@ -13,21 +13,21 @@ city = $("#cityInput").val();
 $("#cityInput").val("");
 
 // get weather info from API and use that to run weather functions
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey; 
+var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
 $.ajax({
   url: queryURL,
   method: "GET"
 })
-.then (function(info){
-console.log(info.name)
-console.log(info.main.humidity)
-console.log(info.wind.speed)
-console.log(info.weather[0].icon)
-console.log(info.main.temp)
-getWeather();
-getFiveDay();
-searchHistory();
-});
+  .then(function (info) {
+    console.log(info.name)
+    console.log(info.main.humidity)
+    console.log(info.wind.speed)
+    console.log(info.weather[0].icon)
+    console.log(info.main.temp)
+    getWeather();
+    getFiveDay();
+    searchHistory();
+  });
 
 // create function to get UV Data
 var queryURl = "https://api.openweathermap.org/data/2.5/onecall?" + city + apiKey;
@@ -35,30 +35,51 @@ $.ajax({
   url: queryURL,
   method: "GET"
 })
-.then (function(uvIndex){
-  console.log(uvIndex.current.uv)
-});
+  .then(function (uvIndex) {
+    console.log(uvIndex.current.uv)
+  });
 
 
 // make function to append previous searches
-function searchHistory(){
-$(".searchHistory ul li").each(function(){
-  var searched = $("<li>").addClass("searched").on("click",function(){
-    $("#fiveDay").addClass("block");
-  $(".list").append(searched);
-  })})};
-
-
-// use HTML classes to display weather information
-function getWeather(){
-  $(".title").text(info.name);
-  $(".date").text(date);
-  $(".temp").text((info.main.temp + 32));
-  $(".humidity").text(info.main.humidity)
-  $(".wind").text(info.wind.speed)
-  $(".uv").text(uvIndex.current.uv)
-  $(".icon").text(info.weather[0].icon)
+function searchHistory() {
+  $(".searchHistory ul li").each(function () {
+    var searched = $("<li>").addClass("searched").on("click", function () {
+      $("#fiveDay").addClass("block");
+      $(".list").append(searched);
+    })
+  })
 };
+
+
+// use HTML classes to create variables to display weather information and add it to page
+function getWeather() {
+  var title = $(".title").text(info.list.name);
+  var dated = $(".date").text(date);
+  var temp = $(".temp").text((info.list.main.temp + 32));
+  var humidity = $(".humidity").text(info.list.main.humidity)
+  var wind = $(".wind").text(info.list.wind.speed)
+  var uv = $(".uv").text(uvIndex.current.uv)
+  var icon = $(".icon").text(info.list.weather[0].icon)
+
+  title.append(dated, image)
+  $("#mainb").append(temp, humidity, wind)
+};
+
+// get weather for five day forecast
+var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+$.ajax({
+  url: queryURL,
+  method: "GET"
+})
+  .then(function (info5) {
+    console.log(info5.name)
+    console.log(info5.forecast.humidity)
+    console.log(info5.forecast.wind.speed)
+    console.log(info5.weather[0].icon)
+    console.log(info5.forecast.temp.value)
+    getFiveDay();
+    searchHistory();
+  });
 
 
 
