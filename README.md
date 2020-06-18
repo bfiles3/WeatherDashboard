@@ -1,6 +1,6 @@
 # WeatherDashboard
 [Weather Dashboard](https://bfiles3.github.io/WeatherDashboard/)
-![](/assets/screenshot.png)
+![](/Assets/screenshot.png)
 
 In order to create a Weather Dashboard it was necessary to register an API key and use the ajax function to get information from the website to show data on weather. The first task was to outline the HTML to reflect the different areas where I would append information from the JavaScript file. I made empty containers for every place that I would need information to show on the webpage. I operated with a placeholder city to code most of the HTML and make sure all of my functions worked correctly, before I added in the ajax function to get weather information for any city that could be searched for.
 
